@@ -1,0 +1,26 @@
+<table>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            $first_row = $result->fetch_assoc(); // Fetching the first row to get column names
+                            echo '<tr>';
+                            foreach ($first_row as $column => $value) {
+                                echo '<th>' . $column . '</th>';
+                            }
+                            echo '</tr>';
+                            echo '<tr>';
+                            foreach ($first_row as $column => $value) {
+                                echo '<td>' . $value . '</td>';
+                            }
+                            echo '</tr>';
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<tr>';
+                                foreach ($row as $column => $value) {
+                                    echo '<td>' . $value . '</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo "<tr><td colspan='9'>THERE IS NO REGISTER NUMBER REGISTERED</td></tr>";
+                        }
+                        ?>
+                    </table>
